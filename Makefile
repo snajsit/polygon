@@ -1,27 +1,24 @@
-DPKG-DEB       ?= dpkg-deb
-DPKG-DEB_FLAGS ?= -v
-SHELL          := /bin/sh
-LINTIAN        ?= lintian
+CONFIG      ?= config.make
+CONFIG_USER ?= config.user.make
 
-arch    ?= all
-deb      = $(name)_$(version)_$(arch).deb
-name    ?= polygon
-src     ?= src
-version ?= 0.0.0
+include $(CONFIG)
+-include $(CONFIG_USER)
+
+SHELL := /bin/sh
 
 all : check
 
 check : lintian
 
 clean :
-	$(RM) $(deb)
+	$(RM) *.deb
 
-deb : $(deb)
+deb : $(DEB)
 
-lintian : $(deb)
-	$(LINTIAN) $(deb)
+lintian : $(DEB)
+	$(LINTIAN) $(LINTIAN_FLAGS) $(DEB)
 
 .PHONY : all check clean deb lintian
 
-$(deb) :
-	$(DPKG-DEB) $(DPKG-DEB_FLAGS) --build $(src) $@
+$(DEB) :
+	$(DPKG-DEB) $(DPKG-DEB_FLAGS) --build $(SRC) $@
