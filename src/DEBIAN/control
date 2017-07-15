@@ -1,6 +1,8 @@
 Package: polygon
 Architecture: all
 Version: 0.0.0
+Maintainer: Joe Doe <joe.doe@example.com>
+Depends: slapd (>= 2.4.42+dfsg-2ubuntu3.2)
 Description: asdf
   asdf asdf asdf
  .
