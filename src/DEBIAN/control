@@ -3,7 +3,7 @@ Architecture: all
 Version: 0.0.0
 Maintainer: Joe Doe <joe.doe@example.com>
 Depends: cowsay,
-	slapd
+	 slapd
 Description: asdf
   asdf asdf asdf
  .
